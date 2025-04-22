@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Delhi AQI Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="animated-background">
+
+    <header>
+        <nav>
+            <div class="logo">Delhi AQI Tracker</div>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Signup</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="about-section">
+        <h1>About Air Quality & Weather Indicators</h1>
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h2>PM2.5</h2>
+                <p>Fine inhalable particles with diameters that are generally 2.5 micrometers and smaller. They penetrate deep into lungs and can cause respiratory and cardiovascular issues.</p>
+            </div>
+
+            <div class="info-card">
+                <h2>PM10</h2>
+                <p>Particulate matter 10 micrometers or less in diameter. Can irritate the eyes, nose, and throat and worsen asthma or heart disease.</p>
+            </div>
+
+            <div class="info-card">
+                <h2>CO (Carbon Monoxide)</h2>
+                <p>A colorless, odorless gas. High exposure can reduce oxygen delivery to the body’s organs and tissues, leading to health risks especially for those with heart conditions.</p>
+            </div>
+
+            <div class="info-card">
+                <h2>NO₂ (Nitrogen Dioxide)</h2>
+                <p>A reddish-brown gas. Long-term exposure can decrease lung function and increase the risk of respiratory conditions.</p>
+            </div>
+
+            <div class="info-card">
+                <h2>SO₂ (Sulfur Dioxide)</h2>
+                <p>
+                    Sulfur Dioxide is a toxic gas with a pungent smell. It is mainly released by burning fossil fuels and during industrial processes such as metal smelting. Short-term exposure can lead to respiratory issues and aggravate conditions like asthma. SO₂ also contributes to acid rain.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h2>O₃ (Ozone)</h2>
+                <p>Good in the upper atmosphere but harmful at ground level. It’s a major component of smog and can cause respiratory distress and lung diseases.</p>
+            </div>
+
+            <div class="info-card" id="middle">
+                <h2>Weather Parameters</h2>
+                <p><strong>Temperature, humidity, wind speed, dew point, solar radiation, UV index</strong> all influence pollutant dispersion. Calm, cool, and humid conditions can trap pollutants, worsening AQI.</p>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

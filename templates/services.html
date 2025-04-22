@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Our Services - AQI Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #2e8b57, #20b2aa, #3cb371, #66cdaa);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: rgb(5, 72, 5);
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: black;
+        }
+
+        .info {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: green;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #ffffff;
+            color: #2e8b57;
+            border: none;
+            padding: 14px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: green;
+            color: #000;
+        }
+
+        .loader {
+            display: none;
+            margin: 20px auto;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ffffff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ccc;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="animated-background">
+    <header>
+        <nav>
+            <div class="logo">Delhi AQI Tracker</div>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Signup</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>AQI Prediction & Preventive Measures</h2>
+        <p class="info">
+            We provide real-time <span class="highlight">Air Quality Index predictions</span> tailored to your local conditions.
+            Get personalized <span class="highlight">preventive health recommendations</span> to stay safe during poor air quality days.
+        </p>
+        <p class="info">
+            For example, in <span class="highlight">New Delhi</span>, we’ve seen high AQI levels requiring caution. You can enter your parameters and we’ll give
+            you instant predictions along with steps to protect yourself.
+        </p>
+
+        <div class="btn-container">
+            <button class="btn" id="getStartedBtn">Get Started</button>
+            <div class="loader" id="loader"></div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 AQI Predictor. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('getStartedBtn').addEventListener('click', function () {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'block';
+
+            setTimeout(function () {
+                loader.style.display = 'none';
+                window.open('/predict', '_blank');  // Open prediction form in new tab
+            }, 1200); // Simulate loading
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Index and Preventive Measures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f3f3; /* Light background for a clean look */
+            margin: 0;
+            padding: 0;
+            color: black;
+        }
+        header {
+            background-color: #2d3e50; /* Dark blue-green for the header */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #2d3e50; /* Dark blue-green for footer */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            padding: 30px;
+            background-image: url("{{ url_for('static', filename='The Most Polluted Cities in India in Winter.jpeg') }}"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2d3e50;
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+            color: black;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #b0c4d6; /* Light blue border */
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #f4f9fc;
+        }
+        .submit-btn {
+            background-color: #4f81bd; /* Light blue for button */
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #3b6d99; /* Darker blue when hovered */
+        }
+        .result {
+          margin-top: 20px;
+          background-color: #f7f9fc;
+          padding: 15px;
+          border-radius: 5px;
+          border: 1px solid #dbe5f1;
+          font-size: 16px;
+          color: #333;
+          text-align: center; /* Centers all text inside the result div */
+      }
+
+      .result-heading {
+          text-align: center; /* Specifically targets the <h3> for centering */
+      }
+    .preventive-measures {
+        margin-top: 15px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .preventive-measures ol {
+        padding-left: 20px;
+    }
+
+    .preventive-measures li {
+        margin-bottom: 10px;
+    }
+
+    .preventive-measures p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .preventive-measures strong {
+        font-weight: bold;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Air Quality Index and Preventive Measures</h1>
+    </header>
+
+    <div class="container">
+        <h2>Enter the Air Quality Parameters</h2>
+        <form id="airQualityForm" action="/predict" method="POST">
+            <label for="pm25"><strong>PM2.5</strong></label>
+            <input type="number" id="pm25" name="pm25" value="254.0" step="0.1" />
+
+            <label for="pm10"><strong>PM10</strong></label>
+            <input type="number" id="pm10" name="pm10" value="124.0" step="0.1" />
+
+            <label for="o3"><strong>Ozone (O3)</strong></label>
+            <input type="number" id="o3" name="o3" value="2.0" step="0.1" />
+
+            <label for="no2"><strong>Nitrogen dioxide (NO2)</strong></label>
+            <input type="number" id="no2" name="no2" value="90.0" step="0.1" />
+
+            <label for="so2"><strong>Sulphur dioxide (SO2)</strong></label>
+            <input type="number" id="so2" name="so2" value="2.0" step="0.1" />
+
+            <label for="co"><strong>Carbon monoxide (CO)</strong></label>
+            <input type="number" id="co" name="co" value="13.0" step="0.1" />
+
+            <label for="temp"><strong>Temperature (°C)</strong></label>
+            <input type="number" id="temp" name="temp" value="14.4" step="0.1" />
+
+            <label for="humidity"><strong>Humidity (%)</strong></label>
+            <input type="number" id="humidity" name="humidity" value="76.7" step="0.1" />
+
+            <label for="windspeed"><strong>Wind Speed (km/h)</strong></label>
+            <input type="number" id="windspeed" name="windspeed" value="13.0" step="0.1" />
+            <label for="windgust"><strong>Dew Point (°C)</strong></label>
+            <input type="number" id="windgust" name="windgust" value="22.0" step="0.1" />
+            <label for="solarradiation"><strong>Solar Radiation (W/m²)</strong></label>
+            <input type="number" id="solarradiation" name="solarradiation" value="72.7" step="0.1" />
+
+    
+
+            <label for="uvindex"><strong>UV Index</strong></label>
+            <input type="number" id="uvindex" name="uvindex" value="3.0" step="0.1" />
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+    <div class="result" id="result">
+        <h3 class="result-heading">Analysis of Air Quality:</h3>
+        <p><strong>AQI score : </strong>{{ aqi_score }}</p>
+        <div class="preventive-measures">
+            {% for item in preventive_measures %}
+                {% if loop.index == 1 %}
+                    <!-- For the first introductory paragraph, display it as a paragraph -->
+                    <p>{{ item }}</p>
+                {% elif loop.index == 2 %}
+                    <!-- Empty line between paragraphs -->
+                    <p>&nbsp;</p>
+                {% elif item.startswith('1.') or item.startswith('2.') or item.startswith('3.') %}
+                    <!-- Numbered items should go in an ordered list -->
+                    <ol>
+                        <li>{{ item[3:] }}</li>
+                    </ol>
+                {% else %}
+                    <!-- For other items, display them as paragraph -->
+                    <p>{{ item }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Air Quality Index & Preventive Measures. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delhi AQI Monitor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="animated-background">
+
+<nav>
+    <div class="logo">Delhi AQI Tracker</div>
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+    <div class="auth-buttons">
+        <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Signup</a>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="description">
+        <h1>Air Quality Index (AQI) in Delhi</h1>
+        <p>
+            The Air Quality Index (AQI) in Delhi frequently ranges from moderate to hazardous due to industrial emissions, traffic, and seasonal crop burning. 
+            Monitoring AQI is vital for public health, especially for vulnerable groups such as children and the elderly.
+        </p>
+        <p>
+            This platform provides AI-powered insights and preventive recommendations based on real-time data. Stay informed. Stay safe.
+        </p>
+    </div>
+    <div class="image-section">
+        <img src="{{ url_for('static', filename='delhi.avif') }}" alt="Delhi City">
+    </div>
+</div>
+
+</body>
+</html>
