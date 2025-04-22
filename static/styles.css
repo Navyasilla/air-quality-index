@@ -1,0 +1,198 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+}
+
+nav {
+    background-color: #1e293b;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+.auth-buttons{
+    display: flex;
+    gap:10px;
+}
+
+/* Base style for login/signup buttons */
+.auth-buttons a {
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-size:14px;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+/* Hover effect */
+.auth-buttons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    align-items: center;
+}
+.animated-background {
+background: linear-gradient(-45deg, #93a5cf, #e4efe9, #a1c4fd, #c2e9fb);
+background-size: 400% 400%;
+animation: gradientFlow 15s ease infinite;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+@keyframes gradientFlow {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+.description {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.description h1 {
+    font-size: 32px;
+    color: #1e293b;
+}
+
+.description p {
+    font-size: 18px;
+    color: #334155;
+}
+
+.image-section {
+    flex: 1;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.services-section {
+padding: 60px 30px;
+text-align: center;
+color: white;
+}
+
+.services-section h1 {
+font-size: 3em;
+margin-bottom: 40px;
+}
+
+.services-container {
+display: flex;
+justify-content: center;
+gap: 30px;
+flex-wrap: wrap;
+}
+
+.service-card {
+background: rgba(255, 255, 255, 0.1);
+padding: 30px;
+border-radius: 20px;
+width: 300px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.service-card:hover {
+transform: translateY(-5px);
+background: rgba(255, 255, 255, 0.15);
+}
+
+.service-card h2 {
+font-size: 1.5em;
+margin-bottom: 15px;
+}
+
+.service-card p {
+font-size: 1em;
+line-height: 1.5em;
+}
+.about-section {
+    padding: 60px 30px;
+    color: black;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+#middle{
+    grid-column: 1 / -1; /* Span all columns */
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    }
+
+.info-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.info-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    font-size: 1em;
+    line-height: 1.6em;
+}
